@@ -2,6 +2,7 @@
 
 @import "tailwindcss";
 
+/* 🌞 Light mode variables */
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -18,15 +19,34 @@
   /* Peach Yellow */
 }
 
+/* 🌚 Dark mode overrides */
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
+
+    /* Optional: tweak colors for dark mode contrast */
+    --color-primary: #4aa3c3;
+    --color-caribbean: #5fa8a0;
+    --color-cambridge: #a8c3af;
+    --color-sage: #d0d290;
+    --color-peach: #ffe8b2;
   }
 }
 
+/* 🌐 Global base styles */
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans, Arial, Helvetica, sans-serif);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Utility root classes for dynamic theming support (optional use) */
+.bg-theme {
+  background-color: var(--background);
+}
+
+.text-theme {
+  color: var(--foreground);
 }
