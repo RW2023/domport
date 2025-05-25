@@ -34,6 +34,7 @@ export type Credit = {
       year: 2023,
       type: "Film",
       image: "/credits/believe.jpg",
+        link: "https://www.imdb.com/title/tt15685360/",
     },
   ];
   
