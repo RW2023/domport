@@ -1,3 +1,6 @@
+// components/CreditGroup.tsx
+'use client';
+
 import { Credit } from '@/data/credits';
 import CreditItem from './CreditItem';
 
@@ -10,20 +13,20 @@ type Props = {
 
 export default function CreditGroup({ type, items, isOpen, onToggle }: Props) {
     return (
-        <div className="border rounded-lg overflow-hidden shadow">
+        <div className="border rounded-lg overflow-hidden">
             <button
+                className="w-full flex justify-between items-center px-4 py-2 bg-gray-100 hover:bg-gray-200 transition"
                 onClick={onToggle}
-                className="w-full text-left px-6 py-4 bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 transition"
             >
-                <h2 className="text-xl font-semibold">{type}</h2>
+                <span className="font-semibold">{type}</span>
+                <span className="text-xl font-bold">{isOpen ? '−' : '+'}</span>
             </button>
-
             {isOpen && (
-                <ul className="divide-y divide-gray-200 dark:divide-gray-700">
-                    {items.map((item, index) => (
-                        <CreditItem key={index} credit={item} />
+                <div className="p-4 space-y-6">
+                    {items.map((credit, index) => (
+                        <CreditItem key={index} credit={credit} />
                     ))}
-                </ul>
+                </div>
             )}
         </div>
     );

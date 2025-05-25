@@ -1,3 +1,4 @@
+// components/CreditAccordion.tsx
 'use client';
 
 import { useState } from 'react';
@@ -10,15 +11,11 @@ type Props = {
 
 export default function CreditAccordion({ credits }: Props) {
     const grouped = credits.reduce<Record<string, Credit[]>>((acc, credit) => {
-        if (!acc[credit.type]) acc[credit.type] = [];
-        acc[credit.type].push(credit);
+        (acc[credit.type] ||= []).push(credit);
         return acc;
     }, {});
-
-    const [openType, setOpenType] = useState<string | null>(null);
-    const toggle = (type: string) => {
-        setOpenType(prev => (prev === type ? null : type));
-    };
+    const [open, setOpen] = useState<string | null>(null);
+    const toggle = (type: string) => setOpen(prev => (prev === type ? null : type));
 
     return (
         <div className="space-y-4">
@@ -27,7 +24,7 @@ export default function CreditAccordion({ credits }: Props) {
                     key={type}
                     type={type}
                     items={items}
-                    isOpen={openType === type}
+                    isOpen={open === type}
                     onToggle={() => toggle(type)}
                 />
             ))}
