@@ -27,7 +27,7 @@ export default function Navbar() {
     const pathname = usePathname();
 
     return (
-        <header className="sticky top-0 z-40 w-full bg-black border-b border-[var(--color-cambridge)] shadow-sm">
+        <header className="sticky top-0 z-40 w-full bg-[var(--background)] border-b border-[var(--color-cambridge)] shadow-sm">
             <div className="max-w-6xl mx-auto flex justify-between items-center px-4 py-3">
                 <Link href="/" className="text-xl font-bold tracking-tight text-[var(--foreground)]">
                     Dominic<span className="text-[var(--color-primary)]">.</span>
