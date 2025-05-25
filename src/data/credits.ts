@@ -10,13 +10,13 @@ export type Credit = {
   
   export const credits: Credit[] = [
     {
-      title: "The Long Summer",
-      role: "Young Jack",
-      company: "Sunbeam Pictures",
+      title: "Robin Hood",
+      role: "Extra",
+      company: " companies	Tiger Aspect Productions",
       year: 2023,
-      type: "Film",
-      image: "/credits/long-summer.jpg",
-      link: "https://example.com/trailer-long-summer",
+      type: "TV",
+      image: "/credits/robinHood.jpg",
+      link: "https://www.imdb.com/title/tt0787985/",
     },
     {
       title: "Good Sam",
@@ -28,12 +28,12 @@ export type Credit = {
         link: "https://www.imdb.com/title/tt11055882/",
     },
     {
-      title: "Back-to-School Catalog",
+      title: "You Gotta Believe",
       role: "Model",
       company: "TrendWear Kids",
       year: 2023,
-      type: "Modeling",
-      image: "/images/back-to-school.jpg",
+      type: "Film",
+      image: "/credits/believe.jpg",
     },
   ];
   
