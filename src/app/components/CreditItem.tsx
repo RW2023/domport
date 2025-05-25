@@ -1,4 +1,7 @@
 // components/CreditItem.tsx
+'use client';
+
+import Image from 'next/image';
 import { Credit } from '@/data/credits';
 
 type Props = { credit: Credit };
@@ -6,9 +9,11 @@ type Props = { credit: Credit };
 export default function CreditItem({ credit }: Props) {
     return (
         <div className="space-y-2">
-            <img
+            <Image
                 src={credit.image}
                 alt={credit.title}
+                width={640}
+                height={360}
                 className="w-full h-auto object-cover rounded-md"
             />
             <h3 className="text-lg font-semibold">{credit.title}</h3>
