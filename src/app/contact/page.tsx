@@ -1,9 +1,7 @@
 import ContactForm from '../components/ContactForm';
-import PageWrapper from '../components/PageWrapper';
 
 export default function ContactPage() {
     return (
-        <PageWrapper>
             <section className="py-16 px-4 sm:px-6 lg:px-8">
                 <div className="max-w-3xl mx-auto text-center mb-10">
                     <h1 className="text-4xl font-bold mb-4">Get in Touch</h1>
@@ -13,6 +11,5 @@ export default function ContactPage() {
                 </div>
                 <ContactForm />
             </section>
-        </PageWrapper>
     );
 }
