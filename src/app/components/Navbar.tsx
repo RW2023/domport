@@ -26,9 +26,9 @@ export default function Navbar() {
     const pathname = usePathname();
 
     return (
-        <header className="sticky top-0 z-40 w-full bg-white border-b border-gray-200 shadow-sm">
+        <header className="sticky top-0 z-40 w-full bg-background border-b border-gray-200 shadow-sm">
             <div className="max-w-6xl mx-auto flex justify-between items-center px-4 py-3">
-                <Link href="/" className="text-xl font-bold tracking-tight text-gray-900">
+                <Link href="/" className="text-xl font-bold tracking-tight text-foreground">
                     Dominic<span className="text-blue-500">.</span>
                 </Link>
 
@@ -37,10 +37,10 @@ export default function Navbar() {
                     {navLinks.map((link) =>
                         link.submenu ? (
                             <div key={link.label} className="relative group">
-                                <button className="font-medium text-gray-800 hover:text-blue-600">
+                                <button className="font-medium text-foreground hover:text-blue-600">
                                     {link.label}
                                 </button>
-                                <div className="absolute hidden group-hover:flex flex-col mt-2 bg-white border rounded-md shadow-lg p-2">
+                                <div className="absolute hidden group-hover:flex flex-col mt-2 bg-background border rounded-md shadow-lg p-2">
                                     {link.submenu.map((item) => (
                                         <Link
                                             key={item.href}
@@ -60,7 +60,7 @@ export default function Navbar() {
                                 key={link.href}
                                 href={link.href}
                                 className={clsx(
-                                    'font-medium text-gray-800 hover:text-blue-600',
+                                    'font-medium text-foreground hover:text-blue-600',
                                     pathname === link.href && 'text-blue-600 font-semibold'
                                 )}
                             >
@@ -73,7 +73,7 @@ export default function Navbar() {
                 {/* Mobile Nav Toggle */}
                 <button
                     onClick={() => setIsOpen(!isOpen)}
-                    className="md:hidden p-2 text-gray-700"
+                    className="md:hidden p-2 text-foreground"
                 >
                     {isOpen ? <X size={24} /> : <Menu size={24} />}
                 </button>
@@ -86,13 +86,13 @@ export default function Navbar() {
                         initial={{ height: 0 }}
                         animate={{ height: 'auto' }}
                         exit={{ height: 0 }}
-                        className="overflow-hidden md:hidden bg-white border-t border-gray-200"
+                        className="overflow-hidden md:hidden bg-background border-t border-gray-200"
                     >
                         <div className="flex flex-col px-4 py-2">
                             {navLinks.map((link) =>
                                 link.submenu ? (
                                     <details key={link.label} className="mb-1">
-                                        <summary className="cursor-pointer py-2 font-medium text-gray-800">
+                                        <summary className="cursor-pointer py-2 font-medium text-foreground">
                                             {link.label}
                                         </summary>
                                         <div className="ml-4 flex flex-col gap-1">
@@ -101,7 +101,7 @@ export default function Navbar() {
                                                     key={item.href}
                                                     href={item.href}
                                                     className={clsx(
-                                                        'py-1 px-2 rounded hover:bg-gray-100 text-gray-700',
+                                                        'py-1 px-2 rounded hover:bg-gray-100 text-foreground',
                                                         pathname === item.href && 'text-blue-600 font-semibold'
                                                     )}
                                                     onClick={() => setIsOpen(false)}
@@ -116,7 +116,7 @@ export default function Navbar() {
                                         key={link.href}
                                         href={link.href}
                                         className={clsx(
-                                            'py-2 font-medium text-gray-800',
+                                            'py-2 font-medium text-foreground',
                                             pathname === link.href && 'text-blue-600 font-semibold'
                                         )}
                                         onClick={() => setIsOpen(false)}
