@@ -1,29 +1,35 @@
 {
   "compilerOptions": {
-    "target": "ES2017",
-    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "forceConsistentCasingInFileNames": true,
+    "target": "es5",
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
     "noEmit": true,
     "esModuleInterop": true,
-    "module": "ESNext",                // matches moduleResolution
-    "moduleResolution": "bundler",     // your working project uses this
+    "module": "esnext",
+    "moduleResolution": "bundler",    // ← changed from "Node" to "bundler"
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
-    "plugins": [{ "name": "next" }],
-    "paths": { "@/*": ["./src/*"] },
+    "plugins": [
+      { "name": "next" }
+    ],
+    "paths": {
+      "@/*": ["./src/*"]
+    },
     "typeRoots": [
-      "./types",                      // ← pick up our .d.ts below
+      "./types",
       "./node_modules/@types"
     ]
   },
   "include": [
     "next-env.d.ts",
-    "types/**/*.d.ts",                 // ← your custom declarations
-    "src/**/*.{ts,tsx}",
+    "types/**/*.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
     ".next/types/**/*.ts"
   ],
   "exclude": ["node_modules"]
