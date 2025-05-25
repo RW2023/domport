@@ -24,15 +24,20 @@ export const metadata: Metadata = {
     title: "Dominic Wilson | Child Actor & Model",
     description:
       "Portfolio of Dominic Wilson showcasing his roles in film, television, and modeling projects.",
-    url: "https://yourdomain.com",
+    url: "https://domport.vercel.app/",
     siteName: "Dominic Wilson Portfolio",
     type: "website",
+    // images will be auto-detected from app/open-graph-image.png
   },
   twitter: {
     card: "summary_large_image",
     title: "Dominic Wilson | Child Actor & Model",
     description:
       "Explore Dominic Wilson’s work in film, TV, and modeling. Professional portfolio for casting and agencies.",
+    // images will be auto-detected from app/open-graph-image.png
+  },
+  icons: {
+    icon: "/favicon-64.png",
   },
 };
 
@@ -42,8 +47,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+    <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
+      <body className="antialiased bg-background text-foreground">
         <div className="min-h-screen flex flex-col">
           <Navbar />
           <main className="flex-grow">
