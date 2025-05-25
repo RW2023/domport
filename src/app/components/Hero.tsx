@@ -8,9 +8,7 @@ import Image from 'next/image';
 
 export default function Hero() {
     return (
-        <section
-            className="relative w-full py-20 bg-[var(--background)] text-[var(--foreground)] overflow-hidden"
-        >
+        <section className="relative w-full py-20 bg-[var(--background)] text-[var(--foreground)] overflow-hidden">
             <div className="container mx-auto px-6 text-center">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
