@@ -3,8 +3,8 @@
 'use client';
 
 import Link from 'next/link';
-import { useState } from 'react';
-import { Menu, X } from 'lucide-react';
+import { useState, useEffect, useRef } from 'react';
+import { Menu, X, ChevronDown } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { usePathname } from 'next/navigation';
 import clsx from 'clsx';
@@ -23,8 +23,21 @@ const navLinks = [
 ];
 
 export default function Navbar() {
-    const [isOpen, setIsOpen] = useState(false);
+    const [mobileOpen, setMobileOpen] = useState(false);
+    const [openMenu, setOpenMenu] = useState<string | null>(null);
     const pathname = usePathname();
+    const navRef = useRef<HTMLDivElement>(null);
+
+    // Close submenu when clicking outside
+    useEffect(() => {
+        const handleClickOutside = (e: MouseEvent) => {
+            if (navRef.current && !navRef.current.contains(e.target as Node)) {
+                setOpenMenu(null);
+            }
+        };
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => document.removeEventListener('mousedown', handleClickOutside);
+    }, []);
 
     return (
         <header className="sticky top-0 z-40 w-full bg-[var(--background)] border-b border-[var(--color-cambridge)] shadow-sm">
@@ -34,27 +47,43 @@ export default function Navbar() {
                 </Link>
 
                 {/* Desktop Nav */}
-                <nav className="hidden md:flex gap-6 items-center">
+                <nav ref={navRef} className="hidden md:flex gap-6 items-center relative">
                     {navLinks.map((link) =>
                         link.submenu ? (
-                            <div key={link.label} className="relative group">
-                                <button className="font-medium text-[var(--foreground)] hover:text-[var(--color-primary)]">
-                                    {link.label}
+                            <div key={link.label} className="relative">
+                                <button
+                                    onClick={() => setOpenMenu((prev) => (prev === link.label ? null : link.label))}
+                                    className={clsx(
+                                        'flex items-center gap-1 font-medium text-[var(--foreground)] hover:text-[var(--color-primary)] transition-colors',
+                                        openMenu === link.label && 'text-[var(--color-primary)]'
+                                    )}
+                                >
+                                    {link.label} <ChevronDown size={16} className={clsx(openMenu === link.label && 'rotate-180')} />
                                 </button>
-                                <div className="absolute hidden group-hover:flex flex-col mt-2 bg-[var(--background)] border border-[var(--color-sage)] rounded-md shadow-lg p-2">
-                                    {link.submenu.map((item) => (
-                                        <Link
-                                            key={item.href}
-                                            href={item.href}
-                                            className={clsx(
-                                                'px-4 py-2 rounded hover:bg-[var(--color-cambridge)] hover:text-white transition-colors',
-                                                pathname === item.href && 'text-[var(--color-primary)] font-semibold'
-                                            )}
+                                <AnimatePresence>
+                                    {openMenu === link.label && (
+                                        <motion.div
+                                            initial={{ opacity: 0, y: -5 }}
+                                            animate={{ opacity: 1, y: 0 }}
+                                            exit={{ opacity: 0, y: -5 }}
+                                            className="absolute left-0 top-full bg-[var(--background)] border border-[var(--color-sage)] rounded-md shadow-lg p-2 flex flex-col min-w-[160px] z-50"
                                         >
-                                            {item.label}
-                                        </Link>
-                                    ))}
-                                </div>
+                                            {link.submenu.map((item) => (
+                                                <Link
+                                                    key={item.href}
+                                                    href={item.href}
+                                                    className={clsx(
+                                                        'px-4 py-2 rounded hover:bg-[var(--color-cambridge)] hover:text-white transition-colors',
+                                                        pathname === item.href && 'text-[var(--color-primary)] font-semibold'
+                                                    )}
+                                                    onClick={() => setOpenMenu(null)}
+                                                >
+                                                    {item.label}
+                                                </Link>
+                                            ))}
+                                        </motion.div>
+                                    )}
+                                </AnimatePresence>
                             </div>
                         ) : (
                             <Link
@@ -73,16 +102,16 @@ export default function Navbar() {
 
                 {/* Mobile Nav Toggle */}
                 <button
-                    onClick={() => setIsOpen(!isOpen)}
+                    onClick={() => setMobileOpen((prev) => !prev)}
                     className="md:hidden p-2 text-[var(--foreground)]"
                 >
-                    {isOpen ? <X size={24} /> : <Menu size={24} />}
+                    {mobileOpen ? <X size={24} /> : <Menu size={24} />}
                 </button>
             </div>
 
             {/* Mobile Menu */}
             <AnimatePresence>
-                {isOpen && (
+                {mobileOpen && (
                     <motion.nav
                         initial={{ height: 0 }}
                         animate={{ height: 'auto' }}
@@ -105,7 +134,7 @@ export default function Navbar() {
                                                         'py-1 px-2 rounded hover:bg-[var(--color-cambridge)] hover:text-white transition-colors',
                                                         pathname === item.href && 'text-[var(--color-primary)] font-semibold'
                                                     )}
-                                                    onClick={() => setIsOpen(false)}
+                                                    onClick={() => setMobileOpen(false)}
                                                 >
                                                     {item.label}
                                                 </Link>
@@ -120,7 +149,7 @@ export default function Navbar() {
                                             'py-2 font-medium text-[var(--foreground)] hover:text-[var(--color-primary)] transition-colors',
                                             pathname === link.href && 'text-[var(--color-primary)] font-semibold'
                                         )}
-                                        onClick={() => setIsOpen(false)}
+                                        onClick={() => setMobileOpen(false)}
                                     >
                                         {link.label}
                                     </Link>
