@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Poppins, Karla } from "next/font/google";
 import "./globals.css";
+import Navbar from "./components/Navbar";
 
 const poppins = Poppins({
   weight: ["400", "600", "700"],
@@ -45,7 +46,7 @@ export default function RootLayout({
         className={`${poppins.variable} ${karla.variable} antialiased`}
       >
         <div className="min-h-screen flex flex-col">
-          {/* Navbar goes here in the future */}
+          <Navbar />
           <main className="flex-grow">{children}</main>
           {/* Footer goes here in the future */}
         </div>
