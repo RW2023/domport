@@ -1,15 +1,21 @@
+/* File: src/app/globals.css */
+
 @import "tailwindcss";
 
 :root {
   --background: #ffffff;
   --foreground: #171717;
-}
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-primary: #033f63;
+  /* Indigo Dye */
+  --color-caribbean: #28666e;
+  /* Caribbean Current */
+  --color-cambridge: #7c9885;
+  /* Cambridge Blue */
+  --color-sage: #b5b682;
+  /* Sage */
+  --color-peach: #fedc97;
+  /* Peach Yellow */
 }
 
 @media (prefers-color-scheme: dark) {
