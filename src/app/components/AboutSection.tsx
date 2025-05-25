@@ -27,15 +27,24 @@ export default function AboutSection() {
 
                 <div className="space-y-4 text-gray-700 dark:text-gray-300">
                     <p>
-                        Dominic Wilson is a charismatic young actor and model currently based in London, Ontario. At just [Age], he has already landed several roles in film and television, showcasing his natural talent and on-screen presence.
+                        Dominic Wilson is a charismatic young actor and model currently based in London, Ontario. At just 13, he has already landed several roles in film and television, showcasing his natural talent and on-screen presence.
                     </p>
 
                     <p>
-                        Dominic is represented by Bon-Ker and is known for his professionalism, adaptability, and infectious enthusiasm on set.
+                        Dominic is represented by{' '}
+                        <a
+                            href="https://bon-kercasting.ca/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-blue-600 underline hover:text-blue-800 dark:text-blue-400"
+                        >
+                            Bon-Ker Casting
+                        </a>
+                        {' '}and is known for his professionalism, adaptability, and infectious enthusiasm on set.
                     </p>
 
                     <p>
-                        When he&apos;s not performing, Dominic enjoys [Fun Hobby #1], [Fun Hobby #2], and spending time with his family and pets. He brings joy and dedication to everything he does — both in front of the camera and behind the scenes.
+                        When he&apos;s not performing, Dominic enjoys playing basketball, video games, and spending time with his family and pets. He brings joy and dedication to everything he does both in front of the camera and behind the scenes.
                     </p>
                 </div>
             </div>
