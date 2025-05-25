@@ -1,4 +1,3 @@
-// data/credits.ts
 export type Credit = {
     title: string;
     role: string;
@@ -6,6 +5,7 @@ export type Credit = {
     year: number;
     type: 'Film' | 'TV' | 'Modeling';
     link?: string;
+    image: string; // new
   };
   
   export const credits: Credit[] = [
@@ -15,14 +15,17 @@ export type Credit = {
       company: "Sunbeam Pictures",
       year: 2023,
       type: "Film",
+      image: "/credits/long-summer.jpg",
       link: "https://example.com/trailer-long-summer",
     },
     {
-      title: "Kids on the Move",
-      role: "Guest Star",
-      company: "MapleLeaf TV",
+      title: "Good Sam",
+      role: "Stand-in",
+      company: "CBC",
       year: 2022,
       type: "TV",
+      image: "/credits/goodSam.jpg",
+        link: "https://www.imdb.com/title/tt11055882/",
     },
     {
       title: "Back-to-School Catalog",
@@ -30,6 +33,7 @@ export type Credit = {
       company: "TrendWear Kids",
       year: 2023,
       type: "Modeling",
+      image: "/images/back-to-school.jpg",
     },
   ];
   

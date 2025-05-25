@@ -6,11 +6,17 @@ type Props = {
 
 export default function CreditItem({ credit }: Props) {
     return (
-        <li className="px-6 py-4 bg-white dark:bg-gray-900">
-            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center">
+        <li className="relative h-48 sm:h-56 md:h-64 overflow-hidden rounded-lg shadow-lg group">
+            <div
+                className="absolute inset-0 bg-cover bg-center transition-transform duration-300 group-hover:scale-105"
+                style={{ backgroundImage: `url(${credit.image})` }}
+            />
+            <div className="absolute inset-0 bg-black bg-opacity-60 group-hover:bg-opacity-70 transition" />
+
+            <div className="relative z-10 h-full w-full flex flex-col justify-between p-4 text-white">
                 <div>
-                    <p className="text-lg font-medium">{credit.title}</p>
-                    <p className="text-sm text-gray-600 dark:text-gray-400">
+                    <h3 className="text-xl font-semibold">{credit.title}</h3>
+                    <p className="text-sm">
                         {credit.role} &mdash; {credit.company} ({credit.year})
                     </p>
                 </div>
@@ -19,7 +25,7 @@ export default function CreditItem({ credit }: Props) {
                         href={credit.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="mt-2 sm:mt-0 text-sm text-blue-600 hover:underline"
+                        className="text-sm underline text-blue-200 hover:text-blue-300"
                     >
                         View Link
                     </a>
