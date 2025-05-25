@@ -16,7 +16,7 @@ export default function Hero() {
                 >
                     <div className="inline-block rounded-full overflow-hidden shadow-lg">
                         <Image
-                            src="/profile/dominicBeach.jpg" // Make sure this exists
+                            src="/profile/dominicBeach.jpg" 
                             alt="Dominic headshot"
                             width={180}
                             height={180}
